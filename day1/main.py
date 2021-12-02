@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 import itertools as it
 
-def load_input(path):
-    with open(path) as f:
-        input_array = [int(val.rstrip('\r\n')) for val in f]
-    return input_array
+def load_input(file_name):
+    with open(file_name) as f:
+        input_data = [int(val.rstrip('\r\n')) for val in f]
+    return input_data
 
 '''
 Transform some iterable e.g. list from [a0, a1, a2, a3, ...] into list of tuples.
@@ -28,12 +28,12 @@ def count_increasing_elements(iterable_input):
     return len(list(filter(lambda elem: elem > 0, pairs)))
 
 def main():
-    input_array = load_input('input.txt')
+    input_data = load_input('input.txt')
     # PART 1
-    increasing_elements_num_1 = count_increasing_elements(input_array)
+    increasing_elements_num_1 = count_increasing_elements(input_data)
     print(f'PART 1: {increasing_elements_num_1}')
     # PART 2
-    transformed_input = list(map(sum, (transform_by_window_sliding(input_array, 3))))
+    transformed_input = list(map(sum, (transform_by_window_sliding(input_data, 3))))
     increasing_elements_num_2 = count_increasing_elements(transformed_input)
     print(f'PART 2: {increasing_elements_num_2}')
 
