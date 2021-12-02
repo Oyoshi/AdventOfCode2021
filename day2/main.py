@@ -22,22 +22,24 @@ def load_input(file_name):
     return input_data
 
 def callback_1(acc, current):
-    if current['direction'] == Direction.FORWARD:
-        acc['horizontal'] = acc['horizontal'] + current['value']
-    elif current['direction'] == Direction.UP:
-        acc['depth'] = acc['depth'] - current['value']
-    elif current['direction'] == Direction.DOWN:
-        acc['depth'] = acc['depth'] + current['value']
+    match current['direction']:
+        case Direction.FORWARD:
+            acc['horizontal'] = acc['horizontal'] + current['value']
+        case Direction.UP:
+            acc['depth'] = acc['depth'] - current['value']
+        case Direction.DOWN:
+            acc['depth'] = acc['depth'] + current['value']
     return acc
 
 def callback_2(acc, current):
-    if current['direction'] == Direction.FORWARD:
-        acc['horizontal'] = acc['horizontal'] + current['value']
-        acc['depth'] = acc['depth'] + acc['aim'] * current['value']
-    elif current['direction'] == Direction.UP:
-        acc['aim'] = acc['aim'] - current['value']
-    elif current['direction'] == Direction.DOWN:
-        acc['aim'] = acc['aim'] + current['value']
+    match current['direction']:
+        case Direction.FORWARD:
+            acc['horizontal'] = acc['horizontal'] + current['value']
+            acc['depth'] = acc['depth'] + acc['aim'] * current['value']
+        case Direction.UP:
+            acc['aim'] = acc['aim'] - current['value']
+        case Direction.DOWN:
+            acc['aim'] = acc['aim'] + current['value']
     return acc
 
 def main():
