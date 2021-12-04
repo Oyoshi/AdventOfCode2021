@@ -7,6 +7,11 @@ class Direction(Enum):
     DOWN = 2
     UP = 3
 
+def load_input(file_name):
+    with open(file_name) as f:
+        input_data = [{'direction': convert_string_to_enum(line.split()[0]), 'value': int(line.split()[1])} for line in f]
+    return input_data
+
 def convert_string_to_enum(direction):
     match direction:
         case 'forward':
@@ -15,11 +20,6 @@ def convert_string_to_enum(direction):
             return Direction.DOWN
         case 'up':
             return Direction.UP
-
-def load_input(file_name):
-    with open(file_name) as f:
-        input_data = [{'direction': convert_string_to_enum(line.split()[0]), 'value': int(line.split()[1])} for line in f]
-    return input_data
 
 def callback_1(acc, current):
     match current['direction']:
