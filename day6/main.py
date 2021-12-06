@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import functools as ft
 
 DAYS_PART_1 = 80
 DAYS_PART_2 = 256
