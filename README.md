@@ -1,5 +1,7 @@
 # Solutions for [Advent of Code 2021](https://adventofcode.com/2021)
 
+![image](https://user-images.githubusercontent.com/13609568/145106307-b06a81bf-cda5-462e-a367-6299f943929b.png)
+
 # Structure of the Project
 
 TODO
