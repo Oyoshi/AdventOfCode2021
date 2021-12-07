@@ -7,7 +7,7 @@ REFRESH_TIMER = 7
 
 def load_input(file_name):
     with open(file_name) as f:
-        input_data = [int(timer.rstrip('\r\n')) for timer in f.readline().split(',')]
+        input_data = [int(timer) for timer in f.readline().split(',')]
     return input_data
 
 def simulate_spawns(timers, days):

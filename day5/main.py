@@ -3,7 +3,7 @@ import functools as ft
 
 def load_input(file_name):
     with open(file_name) as f:
-        input_data = [[{f'{"x" if idx_in == 0 else "y"}{idx_out+1}': int(coord) for idx_in, coord in enumerate(coordinates.split(','))} for idx_out, coordinates in enumerate(line.rstrip('\r\n').split(' -> '))] for line in f]
+        input_data = [[{f'{"x" if idx_in == 0 else "y"}{idx_out+1}': int(coord) for idx_in, coord in enumerate(coordinates.split(','))} for idx_out, coordinates in enumerate(line.split(' -> '))] for line in f]
         input_data = [ft.reduce(lambda lhs, rhs: {**lhs, **rhs}, sublist) for sublist in input_data]
     return input_data
 

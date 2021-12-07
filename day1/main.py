@@ -3,7 +3,7 @@ import itertools as it
 
 def load_input(file_name):
     with open(file_name) as f:
-        input_data = [int(val.rstrip('\r\n')) for val in f]
+        input_data = [int(val) for val in f]
     return input_data
 
 '''
