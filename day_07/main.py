@@ -27,7 +27,7 @@ def main():
     # PART 1
     optimal_sum_1 = find_optimal_position(input_data, callback_1)
     print(f'PART 1: {optimal_sum_1}')
-    # PART 1
+    # PART 2
     optimal_sum_2 = find_optimal_position(input_data, callback_2)
     print(f'PART 2: {optimal_sum_2}')
 

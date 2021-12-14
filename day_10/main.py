@@ -76,6 +76,7 @@ def main():
     # PART 1
     syntax_error_score, incomplete_lines = calculate_syntax_error_score(input_data)
     print(f'PART 1: {syntax_error_score}')
+    # PART 2
     completions_scores = calculate_completions_score(incomplete_lines)
     print(f'PART 2: {st.median(completions_scores)}')
 

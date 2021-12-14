@@ -44,6 +44,7 @@ def main():
     lowest_points_coords = find_lowest_points(input_data)
     risk_level = sum([input_data[pos[0]][pos[1]] for pos in lowest_points_coords]) + len(lowest_points_coords)
     print(f'PART 1: {risk_level}')
+    # PART 2
     basin_sizes = find_basin_sizes(input_data, lowest_points_coords)
     multiplication_three_largest_basins = ft.reduce(lambda x, y: x * y, sorted(basin_sizes, reverse=True)[:3], 1)
     print(f'PART 2: {multiplication_three_largest_basins}')
