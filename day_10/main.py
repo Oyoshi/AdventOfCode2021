@@ -20,7 +20,7 @@ MULTIPLICATION_FACTOR = 5
 
 def load_input(file_name):
     with open(file_name) as f:
-        input_data = [[char for char in line.rstrip('\r\n')] for line in f]
+        input_data = [[char for char in line.rstrip()] for line in f]
     return input_data
 
 def calculate_syntax_error_score(input):

@@ -7,7 +7,7 @@ MAX_ENERGY_LEVEL = 10
 
 def load_input(file_name):
     with open(file_name) as f:
-        input_data = [[{'level' : int(char), 'flashed': False} for char in line.rstrip('\r\n')] for line in f]
+        input_data = [[{'level' : int(char), 'flashed': False} for char in line.rstrip()] for line in f]
     return input_data
 
 def simulate_flashes(energy_levels):

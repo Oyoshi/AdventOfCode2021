@@ -2,7 +2,7 @@
 
 def load_input(file_name):
     with open(file_name) as f:
-        tmp_data = [[char for char in line.rstrip('\r\n')] for line in f]
+        tmp_data = [[char for char in line.rstrip()] for line in f]
     input_data = transpose(tmp_data)
     return input_data
 

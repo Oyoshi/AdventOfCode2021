@@ -5,7 +5,7 @@ TOP_POINT_HEIGHT = 9
 
 def load_input(file_name):
     with open(file_name) as f:
-        input_data = [[int(char) for char in line.rstrip('\r\n')] for line in f]
+        input_data = [[int(char) for char in line.rstrip()] for line in f]
     return input_data
 
 def find_lowest_points(matrix):

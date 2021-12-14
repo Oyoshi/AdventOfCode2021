@@ -13,7 +13,7 @@ def load_input(file_name):
                 orders = [int(order) for order in line.split(',')]
                 is_first_line = False
             elif not line.isspace():
-                boards.append([{'value': int(elem), 'marked': False} for elem in filter(lambda elem: elem.isdigit(), line.rstrip('\r\n').split(' '))])
+                boards.append([{'value': int(elem), 'marked': False} for elem in filter(lambda elem: elem.isdigit(), line.rstrip().split(' '))])
         boards = [boards[idx:idx + BOARD_SIZE] for idx in range(0, len(boards), BOARD_SIZE)]
     return orders, boards
 
@@ -61,7 +61,7 @@ def sum_unmarked_numbers_part2(orders, boards):
                             row_idx = col_idx = BOARD_SIZE # to stop while loops
                     col_idx += 1
                 row_idx += 1
-            board_idx += 1   
+            board_idx += 1
     return winning_number, ft.reduce(lambda x, y: x + y['value'], filter(lambda val: not val['marked'], it.chain.from_iterable(boards[winning_boards[-1]])), 0)
 
 def main():
