@@ -40,13 +40,13 @@ def simulate_flashes(energy_levels):
 def simulate_synchronizing(energy_levels):
     rows = len(energy_levels)
     cols = len(energy_levels[0])
-    step = 0
+    step = 1
     while True:
         flash_counter_per_step = 0
         stack = []
         for i in range(rows):
             for j in range(cols):
-                energy_levels[i][j]['flashed'] = False # resetting state
+                energy_levels[i][j]['flashed'] = False # resetting state for each step
                 energy_levels[i][j]['level'] = (energy_levels[i][j]['level'] + 1) % MAX_ENERGY_LEVEL
                 if energy_levels[i][j]['level'] == MIN_ENERGY_LEVEL:
                     energy_levels[i][j]['flashed'] = True
@@ -63,9 +63,9 @@ def simulate_synchronizing(energy_levels):
                     energy_levels[new_i][new_j]['flashed'] = True
                     stack.append(c)
                     flash_counter_per_step += 1
-        step += 1
         if flash_counter_per_step == rows * cols:
             return step
+        step += 1
 
 def compute_neighbours(i, j, i_max, j_max):
     return [(i + a[0], j + a[1]) for a in [(-1,-1), (-1,0), (-1,1), (1,-1), (1,0), (1,1), (0,-1), (0,1)] if ( (0 <= i + a[0] < i_max) and (0 <= j + a[1] < j_max))]
