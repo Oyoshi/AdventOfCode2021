@@ -23,16 +23,16 @@ def find_basin_sizes(matrix, lowest_points_coords):
     basin_sizes = []
     rows, cols = len(matrix), len(matrix[0])
     for pos in lowest_points_coords:
-        coords = set(find_basin_sizes_rec_helper(matrix, pos[0], pos[1], rows, cols, [(pos[0], pos[1])]))
+        coords = set(find_basin_sizes_rec(matrix, pos[0], pos[1], rows, cols, [(pos[0], pos[1])]))
         basin_sizes.append(len(coords))
     return basin_sizes
 
-def find_basin_sizes_rec_helper(matrix, i ,j, i_max, j_max, coords):
+def find_basin_sizes_rec(matrix, i ,j, i_max, j_max, coords):
     current = matrix[i][j]
     higher_neighbours = list(filter(lambda pos: (matrix[pos[0]][pos[1]] > current) and matrix[pos[0]][pos[1]] != TOP_POINT_HEIGHT, compute_neighbours(i, j, i_max, j_max)))
     coords += higher_neighbours
     for pos in higher_neighbours:
-        coords = find_basin_sizes_rec_helper(matrix, pos[0], pos[1], i_max, j_max, coords)
+        coords = find_basin_sizes_rec(matrix, pos[0], pos[1], i_max, j_max, coords)
     return coords
 
 def compute_neighbours(i, j, i_max, j_max):
