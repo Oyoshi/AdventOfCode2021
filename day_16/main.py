@@ -92,8 +92,51 @@ def parse_operator(transmission, offset):
         i += BITS_NUM_LENGTH_TYPE_ID_1
     return length_type_id, total_length, subpackets_num, i
 
-def evaluate(packets):
-    pass
+def evaluate(transmission):
+    res, _ = evaluate_packet_rec(transmission, 0)
+    return res
+
+def evaluate_packet_rec(transmission, offset):
+    _, type_id = parse_header(transmission, offset)
+    offset += PACKET_HEADER_LENGTH
+    if type_id == TypeId.LITERAL:
+        literal_value, upd_offset = parse_literal_value(transmission, offset)
+        offset += upd_offset
+        return literal_value, offset
+    else:
+        _, total_length, subpackets_num, upd_offset = parse_operator(transmission, offset)
+        offset += upd_offset
+        partial_res = []
+        if total_length:
+            current_offset = offset
+            while current_offset - offset < total_length:
+                partial, current_offset = evaluate_packet_rec(transmission, current_offset)
+                partial_res.append(partial)
+            offset = current_offset
+            return evaluate_operator(type_id, partial_res), offset
+        elif subpackets_num:
+            for _ in range(subpackets_num):
+                partial, current_offset = evaluate_packet_rec(transmission, offset)
+                offset = current_offset
+                partial_res.append(partial)
+            return evaluate_operator(type_id, partial_res), offset
+
+def evaluate_operator(operator, operands):
+    match operator:
+        case TypeId.SUM:
+            return ft.reduce(op.add, operands)
+        case TypeId.PROD:
+            return ft.reduce(op.mul, operands) 
+        case TypeId.MIN:
+            return ft.reduce(min, operands) 
+        case TypeId.MAX:
+            return ft.reduce(max, operands) 
+        case TypeId.GT:
+            return int(ft.reduce(op.gt, operands)) 
+        case TypeId.LT:
+            return int(ft.reduce(op.lt, operands)) 
+        case TypeId.EQ:
+            return int(ft.reduce(op.eq, operands)) 
 
 def main():
     transmission = load_input('input.txt')
@@ -101,8 +144,8 @@ def main():
     # PART 1
     versions_sum = ft.reduce(lambda acc, cur: acc + cur['version'], packets, 0)
     print(f'PART 1: {versions_sum}')
-    value = evaluate(packets)
-    print(f'PART 1: {value}')
+    value = evaluate(transmission)
+    print(f'PART 2: {value}')
 
 if __name__ == '__main__':
     main()
