@@ -144,6 +144,7 @@ def main():
     # PART 1
     versions_sum = ft.reduce(lambda acc, cur: acc + cur['version'], packets, 0)
     print(f'PART 1: {versions_sum}')
+    # PART 2
     value = evaluate(transmission)
     print(f'PART 2: {value}')
 

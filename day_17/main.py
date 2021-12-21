@@ -44,6 +44,7 @@ def main():
     simulation_stats = simulate_balistic_trajectory(target_area)
     y_max =ft.reduce(lambda acc, cur: max(acc, cur['Y_MAX']), simulation_stats, 0)
     print(f'PART 1: {y_max}')
+    # PART 2
     unique_velocities = len(simulation_stats)
     print(f'PART 2: {unique_velocities}')
 
