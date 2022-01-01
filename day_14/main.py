@@ -50,7 +50,6 @@ def generate_pairs_counter(pairs_insertion):
 def generate_pairs(iterable_input):
     return transform_by_window_sliding(iterable_input, 2)
 
-# TODO - used in day_01, move into utils
 def transform_by_window_sliding(iterable_input, size):
     iterators = it.tee(iterable_input, size)
     iterators = [it.islice(iterator, i, None) for i, iterator in enumerate(iterators)]

@@ -6,18 +6,6 @@ def load_input(file_name):
         input_data = [int(val) for val in f]
     return input_data
 
-'''
-Transform some iterable e.g. list from [a0, a1, a2, a3, ...] into list of tuples.
-
-:param iterable iterable_input: iterable object which will be transformed into list of tuples
-:param int size: size of each tuple
-
-match size | 0 -> []
-           | 1 -> [a0, a1, a2, a3, ...] - original input
-           | 2 -> [(a0, a1), (a1, a2), (a2, a3), ...] - pairs
-           | 3 -> [(a0, a1, a2), (a1, a2, a3), (a2, a3, a4), ...] - triplets
-           ...
-'''
 def transform_by_window_sliding(iterable_input, size):
     iterators = it.tee(iterable_input, size)
     iterators = [it.islice(iterator, i, None) for i, iterator in enumerate(iterators)]

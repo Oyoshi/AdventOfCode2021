@@ -28,7 +28,6 @@ def compute_min_risk(risk_matrix):
                 queue.put((acc_risk + risk, (x, y)))
                 visited.add((x, y))
 
-# TODO - move to utils file
 def compute_neighbours(i, j, i_max, j_max):
     return [(i + a[0], j + a[1]) for a in [(-1,0), (1,0), (0,-1), (0,1)] if ( (0 <= i + a[0] < i_max) and (0 <= j + a[1] < j_max))]
 
