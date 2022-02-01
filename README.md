@@ -1,8 +1,6 @@
 ## Solutions for 🎄 [Advent of Code 2021](https://adventofcode.com/2021)
 
-Here is my first attempt to AoC, all solutions are written in [Python](https://www.python.org/) 🐍. Pretty sure this code is not idiomatic but I treat it like a big chance to learn something new. While I was stuck I was able to move forward by getting an inspiration from [reddit](https://www.reddit.com/r/adventofcode/) megathread.
-
-I didn't completed all tasks but still I really enjoyed it.
+Here is my first attempt to AoC, all solutions are written in [Python](https://www.python.org/) 🐍. Pretty sure this code is not idiomatic but I treat it like a big chance to learn something new. While I was stuck I was able to move forward by getting an inspiration from [reddit](https://www.reddit.com/r/adventofcode/) megathread. I didn't completed all tasks but still it was a really enjoyable experience.
 
 ![image](https://user-images.githubusercontent.com/13609568/152051354-07b64b5d-127f-4987-8ace-c3a3c901ea59.png)
 
